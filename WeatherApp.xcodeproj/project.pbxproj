@@ -18,6 +18,7 @@
 		B02C7C9D1F61A2F4007AD67E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02C7C9B1F61A2F4007AD67E /* LaunchScreen.storyboard */; };
 		B02C7CA81F61CF59007AD67E /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C7CA71F61CF59007AD67E /* CurrentWeather.swift */; };
 		B03F075C1F61FD2300DBFC0D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03F075B1F61FD2300DBFC0D /* Constants.swift */; };
+		B09B43B91F85030100FBA0C2 /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B43B81F85030100FBA0C2 /* DateFormater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B02C7C9E1F61A2F4007AD67E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B02C7CA71F61CF59007AD67E /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		B03F075B1F61FD2300DBFC0D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B09B43B81F85030100FBA0C2 /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				B03F075B1F61FD2300DBFC0D /* Constants.swift */,
 				B00AFB721F665BA60072E906 /* ForecastStruct.swift */,
 				B00AFB761F6897B40072E906 /* ForecastArray.swift */,
+				B09B43B81F85030100FBA0C2 /* DateFormater.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				B02C7C951F61A2F4007AD67E /* ViewController.swift in Sources */,
 				B02C7C931F61A2F4007AD67E /* AppDelegate.swift in Sources */,
 				B00AFB771F6897B40072E906 /* ForecastArray.swift in Sources */,
+				B09B43B91F85030100FBA0C2 /* DateFormater.swift in Sources */,
 				B00AFB751F6676B30072E906 /* ForecastTableViewCell.swift in Sources */,
 				B03F075C1F61FD2300DBFC0D /* Constants.swift in Sources */,
 				B026173C1F66268F00805AE9 /* Forecast.swift in Sources */,

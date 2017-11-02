@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var forecastDataWeather: ForecastStruct!
     //var forecastDataWeatherArray: [String]? = ["Oren"]
     var forecastDataWeatherArray: [ForecastStruct]? = [ForecastStruct()]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
