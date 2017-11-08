@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
  
     
     @IBOutlet weak var imageBackground: UIImageView!
@@ -66,7 +66,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let forecast = forecastDataWeatherArray {
             //if let forecast = forecastDataWeather {
                 cell.configureCell(forecast: forecast, cellRow: indexPath.row)
-                print("Cell cell cell cell cell")
+                print("Cell cell cell cell cell \(indexPath.row)")
+                
             }
           
             
@@ -78,6 +79,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
+    
+    
+
+
     
     func updateMainUI() {
         labelCity.text = currentDataWeather.cityName

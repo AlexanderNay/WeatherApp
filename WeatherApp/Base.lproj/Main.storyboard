@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -19,6 +19,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fW-Qr-lFE">
+                                <rect key="frame" x="30" y="507" width="315" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="i0L-3A-vnB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calm" translatesAutoresizingMaskIntoConstraints="NO" id="iGg-fc-BJp" userLabel="ImageBackgroung">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
                                 <constraints>
@@ -71,7 +80,7 @@
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z4I-Id-Tb2">
                                 <rect key="frame" x="0.0" y="353" width="375" height="314"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="PZ4-3I-Wai">
@@ -175,6 +184,9 @@
                             <constraint firstItem="z4I-Id-Tb2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="70L-gZ-tqS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="z4I-Id-Tb2" secondAttribute="bottom" id="78X-dt-rdk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="z4I-Id-Tb2" secondAttribute="trailing" id="And-Lt-VYD"/>
+                            <constraint firstItem="8fW-Qr-lFE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="KvP-eQ-i3d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8fW-Qr-lFE" secondAttribute="bottom" constant="100" id="Mzm-vx-CX4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8fW-Qr-lFE" secondAttribute="trailing" constant="30" id="OYq-oC-KnM"/>
                             <constraint firstItem="z4I-Id-Tb2" firstAttribute="top" secondItem="iGg-fc-BJp" secondAttribute="bottom" constant="3" id="Rz7-wN-Bpb"/>
                             <constraint firstItem="iGg-fc-BJp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TU9-Ti-Jsv"/>
                             <constraint firstItem="iGg-fc-BJp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Xj0-pw-IhK"/>

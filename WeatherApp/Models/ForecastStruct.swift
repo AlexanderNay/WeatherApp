@@ -43,6 +43,25 @@ class ForecastStruct: Decodable {
         var wind: Wind!
         var sys: Sys!
         var dt_txt: String!
+        
+        var weekDay: String {
+            let dateFormater = DateFormatter()
+            
+            dateFormater.dateStyle = .short
+            //dateFormater.weekdaySymbols
+            dateFormater.timeStyle = .none
+            let timeInterval = TimeInterval(dt)
+            let date = Date(timeIntervalSince1970: timeInterval)
+            //let currentDate = dateFormater.string(from: date)
+            //let weekday = Calendar.current.component(.weekday, from: date)
+            let weekdayName = dateFormater.weekdaySymbols[Calendar.current.component(.weekday, from: date) - 1]
+            
+            
+            return weekdayName
+        }
+        
+        
+        
     }
     class City: Decodable {
         class Coord: Decodable {
@@ -55,6 +74,7 @@ class ForecastStruct: Decodable {
         var coord: Coord!
         var country: String!
         var population: Int!
+        
     }
     
     var cod: String!

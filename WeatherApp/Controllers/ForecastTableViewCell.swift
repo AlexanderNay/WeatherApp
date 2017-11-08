@@ -17,6 +17,8 @@ class ForecastTableViewCell: UITableViewCell {
     @IBOutlet weak var maxTemp: UILabel!
     @IBOutlet weak var minTemp: UILabel!
     var isBlurEffectAdded = false
+    
+    
     func configureCell(forecast: [ForecastStruct], cellRow: Int) {
         if forecast[1].cod != nil {
             //addBlurEffectForCell()
@@ -25,14 +27,15 @@ class ForecastTableViewCell: UITableViewCell {
                 addBlurEffectForCell()
             }
             let correctedData = String(forecast[1].list[cellRow].dt_txt.dropLast(3))
-            dataForecast.text = correctedData  //Add spase between data and time
+            // dataForecast.text = correctedData  //Add spase between data and time
+            dataForecast.text = forecast[1].list[cellRow].weekDay
             detailWeather.text = forecast[1].list[cellRow].weather[0].description.capitalized
             
             let maxTempValue = Int(forecast[1].list[cellRow].main.temp_max - 273)
             if maxTempValue > 0 {
-               maxTemp.text = "+" + String(maxTempValue) + "°"
+                maxTemp.text = "+" + String(maxTempValue) + "°"
             } else {
-               maxTemp.text = String(maxTempValue) + "°"
+                maxTemp.text = String(maxTempValue) + "°"
             }
             
             //maxTemp.text = String(Int(forecast[1].list[cellRow].main.temp_max - 273))
@@ -55,8 +58,8 @@ class ForecastTableViewCell: UITableViewCell {
         
         
         
-
-       
+        
+        
         
     }
     
