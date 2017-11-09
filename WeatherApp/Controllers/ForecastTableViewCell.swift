@@ -28,14 +28,20 @@ class ForecastTableViewCell: UITableViewCell {
             }
             let correctedData = String(forecast[1].list[cellRow].dt_txt.dropLast(3))
             // dataForecast.text = correctedData  //Add spase between data and time
+            
+            let test123 = forecast[1].separetedForecast
+            print(test123)
+            
             dataForecast.text = forecast[1].list[cellRow].weekDay
             detailWeather.text = forecast[1].list[cellRow].weather[0].description.capitalized
             
             let maxTempValue = Int(forecast[1].list[cellRow].main.temp_max - 273)
             if maxTempValue > 0 {
-                maxTemp.text = "+" + String(maxTempValue) + "°"
+                //maxTemp.text = "+" + String(maxTempValue) + "°"
+                maxTemp.text = String(forecast[1].list[cellRow].main.temp_max)
             } else {
-                maxTemp.text = String(maxTempValue) + "°"
+                //maxTemp.text = String(maxTempValue) + "°"
+                maxTemp.text = String(forecast[1].list[cellRow].main.temp_max)
             }
             
             //maxTemp.text = String(Int(forecast[1].list[cellRow].main.temp_max - 273))

@@ -17,6 +17,7 @@
 		B02C7C9A1F61A2F4007AD67E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B02C7C991F61A2F4007AD67E /* Assets.xcassets */; };
 		B02C7C9D1F61A2F4007AD67E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02C7C9B1F61A2F4007AD67E /* LaunchScreen.storyboard */; };
 		B02C7CA81F61CF59007AD67E /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C7CA71F61CF59007AD67E /* CurrentWeather.swift */; };
+		B0359B601FB3D2850074DC4A /* SeparatedForecastStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0359B5F1FB3D2850074DC4A /* SeparatedForecastStruct.swift */; };
 		B03F075C1F61FD2300DBFC0D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03F075B1F61FD2300DBFC0D /* Constants.swift */; };
 		B09B43B91F85030100FBA0C2 /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B43B81F85030100FBA0C2 /* DateFormater.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		B02C7C9C1F61A2F4007AD67E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B02C7C9E1F61A2F4007AD67E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B02C7CA71F61CF59007AD67E /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
+		B0359B5F1FB3D2850074DC4A /* SeparatedForecastStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatedForecastStruct.swift; sourceTree = "<group>"; };
 		B03F075B1F61FD2300DBFC0D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B09B43B81F85030100FBA0C2 /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +107,7 @@
 				B00AFB721F665BA60072E906 /* ForecastStruct.swift */,
 				B00AFB761F6897B40072E906 /* ForecastArray.swift */,
 				B09B43B81F85030100FBA0C2 /* DateFormater.swift */,
+				B0359B5F1FB3D2850074DC4A /* SeparatedForecastStruct.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				B00AFB771F6897B40072E906 /* ForecastArray.swift in Sources */,
 				B09B43B91F85030100FBA0C2 /* DateFormater.swift in Sources */,
 				B00AFB751F6676B30072E906 /* ForecastTableViewCell.swift in Sources */,
+				B0359B601FB3D2850074DC4A /* SeparatedForecastStruct.swift in Sources */,
 				B03F075C1F61FD2300DBFC0D /* Constants.swift in Sources */,
 				B026173C1F66268F00805AE9 /* Forecast.swift in Sources */,
 			);

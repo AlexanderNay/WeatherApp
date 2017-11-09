@@ -83,6 +83,68 @@ class ForecastStruct: Decodable {
     var list: [List]!
     var city: City!
     
+    lazy var separetedForecast = getSeparatedForecastsByWeekdays(data: self)
+
+    
+     func getSeparatedForecastsByWeekdays ( data: ForecastStruct) -> SeparatedForecastStruct {
+        if data != nil {
+            
+            func temperetureConverterAndSetter(kelvin: Int) -> String {
+                let celsiiValue = kelvin - 273
+                if celsiiValue > 0 {
+                    return  "+" + String(celsiiValue) + "°"
+                } else {
+                    return String(celsiiValue) + "°"
+                }
+            }
+            var separetedStruct = SeparatedForecastStruct()
+            var counterDays = 0
+            var counterPartsOfDay = 0
+            var counterOfIndex = 0
+            for index in 0..<self.list.count - 1 {
+                
+                if data.list[index].weekDay == data.list[index + 1].weekDay {
+                    
+                    
+                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].upTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[index].main.temp_max))
+                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].downTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[index].main.temp_min))
+                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].typeOfWeather = data.list[index].weather[0].description.capitalized
+                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].time = data.list[index].dt_txt
+                    counterPartsOfDay += 1
+                    separetedStruct.baseDays[counterDays].partsOfTheDay.append(SeparatedForecastStruct.BaseDay.PartsOfTheDay())
+                    
+                    
+                    
+                    print("Days equal")
+                } else {
+                    
+                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].upTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[index].main.temp_max))
+                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].downTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[index].main.temp_min))
+                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].typeOfWeather = data.list[index].weather[0].description.capitalized
+                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].time = data.list[index].dt_txt
+                    counterPartsOfDay = 0
+                    counterDays += 1
+                    separetedStruct.baseDays.append(SeparatedForecastStruct.BaseDay())
+                    print("Day was changed")
+                    
+                }
+                counterOfIndex += 1
+                
+               
+                
+
+            }
+            separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].upTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[counterOfIndex].main.temp_max))
+            separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].downTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[counterOfIndex].main.temp_min))
+            separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].typeOfWeather = data.list[counterOfIndex].weather[0].description.capitalized
+            separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].time = data.list[counterOfIndex].dt_txt
+            
+            return separetedStruct
+        } else {
+            return SeparatedForecastStruct()
+        }
+    }
+    
     
     func getForecastData(completed: @escaping (_ data: ForecastStruct)->()) {
        
