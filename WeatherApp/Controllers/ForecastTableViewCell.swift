@@ -20,12 +20,7 @@ class ForecastTableViewCell: UITableViewCell {
     
     
     func configureCell(forecast: [ForecastStruct], cellRow: Int) {
-        if forecast[1].cod != nil {
-            //addBlurEffectForCell()
-            
-            if !isBlurEffectAdded {
-                addBlurEffectForCell()
-            }
+        
             let correctedData = String(forecast[1].list[cellRow].dt_txt.dropLast(3))
             // dataForecast.text = correctedData  //Add spase between data and time
             
@@ -56,7 +51,12 @@ class ForecastTableViewCell: UITableViewCell {
             backgroundImageCell.image = UIImage(named: forecast[1].list[cellRow].weather[0].description)
             mainWeatherImage.image = UIImage(named: forecast[1].list[cellRow].weather[0].icon)
             
+        if forecast[1].cod != nil {
+            //addBlurEffectForCell()
             
+            if !isBlurEffectAdded {
+                addBlurEffectForCell()
+            }
             
         }
         //print("CODE CODE = " + forecast.cod)
@@ -73,7 +73,7 @@ class ForecastTableViewCell: UITableViewCell {
         let blurEffect = UIBlurEffect(style: .dark)
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.frame = backgroundImageCell.bounds
-        blurView.alpha = 0.3
+        blurView.alpha = 0.1
         backgroundImageCell.addSubview(blurView)
         isBlurEffectAdded = true
     }
