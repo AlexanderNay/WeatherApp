@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
  
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     var imageBackground = ""
     var imageIcon = ""
@@ -69,9 +70,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 60
-        } else {
             return 0
+        } else {
+            return 40
         }
     }
 
@@ -173,6 +174,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        //imageBackground.image = UIImage(named: currentDataWeather.whetherDetailType)
 //        imageIcon = currentDataWeather.iconNameForCurrentWeather
 //        //imageIcon.image = UIImage(named: currentDataWeather.iconNameForCurrentWeather)
+        
+        backgroundImage.image = UIImage(named: currentDataWeather.whetherDetailType)
+        
+                if backgroundImage.bounds != nil {
+                    let blurEffect = UIBlurEffect(style: .dark)
+                    let blurView = UIVisualEffectView(effect: blurEffect)
+                    blurView.frame = backgroundImage.bounds
+                    blurView.alpha = 0.5
+                    backgroundImage.addSubview(blurView)
+                }
         
         print("********************************** \n \n **************Functon updateMainUI completed***************** \n \n *****************")
         print(currentDataWeather.cityName)
