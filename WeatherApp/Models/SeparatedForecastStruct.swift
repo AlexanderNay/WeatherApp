@@ -13,7 +13,7 @@ struct SeparatedForecastStruct {
     
     struct BaseDay {
         var partsOfTheDay: [PartsOfTheDay] = [PartsOfTheDay()]
-        
+        var weekDay = ""
         
         struct PartsOfTheDay {
             var time = ""

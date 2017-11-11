@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
  
     
     var imageBackground = ""
@@ -19,11 +19,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var currentTemp = ""
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var currentDataWeather: CurrentWeather!
     var forecastDataWeather: ForecastStruct!
     //var forecastDataWeatherArray: [String]? = ["Oren"]
     var forecastDataWeatherArray: [ForecastStruct]? = [ForecastStruct()]
+    //var separetedForecastData = SeparatedForecastStruct()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +90,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if section == 0 {
             return 1
         } else if section == 1 {
-            return forecastDataWeatherArray![1].list.count
+            //return forecastDataWeatherArray![1].list.count
+           
+            return forecastDataWeatherArray![1].separetedForecast.baseDays.count
         } else {
             return 0
         }
@@ -131,6 +135,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let tableViewCell = cell as? ForecastTableViewCell else { return }
+        tableViewCell.setCollectionViewDataSourseDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+    }
+    
+    //TODO: - CollecrionView
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return forecastDataWeatherArray![1].separetedForecast.baseDays[collectionView.tag].partsOfTheDay.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? ForecastCollectionViewCell {
+            let data = forecastDataWeatherArray![1].separetedForecast.baseDays[collectionView.tag].partsOfTheDay[indexPath.row]
+            cell.setCellsItems(data: data)
+            return cell
+        } else {
+            return ForecastCollectionViewCell()
+        }
+        
+    }
+    
     
 
 
@@ -153,6 +181,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func updateForecastUI(data: ForecastStruct) {
         forecastDataWeatherArray?.append(data)
+        
         print("ffffffffffffffffffff___________\(forecastDataWeatherArray)")
         tableView.delegate = self
         tableView.dataSource = self

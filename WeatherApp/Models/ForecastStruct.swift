@@ -120,7 +120,7 @@ class ForecastStruct: Decodable {
                     
                     separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].upTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[index].main.temp_max))
                     separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].downTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[index].main.temp_min))
-                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].typeOfWeather = data.list[index].weather[0].description.capitalized
+                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].typeOfWeather = data.list[index].weather[0].description
                     separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].time = converterDateToTime(timeSec: data.list[index].dt)
                     counterPartsOfDay += 1
                     separetedStruct.baseDays[counterDays].partsOfTheDay.append(SeparatedForecastStruct.BaseDay.PartsOfTheDay())
@@ -132,10 +132,12 @@ class ForecastStruct: Decodable {
                     
                     separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].upTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[index].main.temp_max))
                     separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].downTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[index].main.temp_min))
-                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].typeOfWeather = data.list[index].weather[0].description.capitalized
+                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].typeOfWeather = data.list[index].weather[0].description
                     separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].time = converterDateToTime(timeSec: data.list[index].dt)
                     counterPartsOfDay = 0
+                    separetedStruct.baseDays[counterDays].weekDay = data.list[index].weekDay
                     counterDays += 1
+                    
                     separetedStruct.baseDays.append(SeparatedForecastStruct.BaseDay())
                     print("Day was changed")
                     
@@ -148,8 +150,9 @@ class ForecastStruct: Decodable {
             }
             separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].upTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[counterOfIndex].main.temp_max))
             separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].downTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[counterOfIndex].main.temp_min))
-            separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].typeOfWeather = data.list[counterOfIndex].weather[0].description.capitalized
+            separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].typeOfWeather = data.list[counterOfIndex].weather[0].description
             separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].time = converterDateToTime(timeSec: data.list[counterOfIndex].dt)
+            separetedStruct.baseDays[counterDays].weekDay = data.list[counterOfIndex].weekDay
             
             return separetedStruct
         } else {

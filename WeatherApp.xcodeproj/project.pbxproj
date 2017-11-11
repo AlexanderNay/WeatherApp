@@ -21,6 +21,7 @@
 		B0359B621FB4933E0074DC4A /* CurrentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0359B611FB4933E0074DC4A /* CurrentTableViewCell.swift */; };
 		B0359B711FB531990074DC4A /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0359B6F1FB531990074DC4A /* HeaderTableViewCell.swift */; };
 		B0359B721FB531990074DC4A /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0359B701FB531990074DC4A /* HeaderTableViewCell.xib */; };
+		B0359B741FB675780074DC4A /* ForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0359B731FB675780074DC4A /* ForecastCollectionViewCell.swift */; };
 		B03F075C1F61FD2300DBFC0D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03F075B1F61FD2300DBFC0D /* Constants.swift */; };
 		B09B43B91F85030100FBA0C2 /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B43B81F85030100FBA0C2 /* DateFormater.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		B0359B611FB4933E0074DC4A /* CurrentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewCell.swift; sourceTree = "<group>"; };
 		B0359B6F1FB531990074DC4A /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		B0359B701FB531990074DC4A /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
+		B0359B731FB675780074DC4A /* ForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		B03F075B1F61FD2300DBFC0D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B09B43B81F85030100FBA0C2 /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 				B0359B611FB4933E0074DC4A /* CurrentTableViewCell.swift */,
 				B0359B6F1FB531990074DC4A /* HeaderTableViewCell.swift */,
 				B0359B701FB531990074DC4A /* HeaderTableViewCell.xib */,
+				B0359B731FB675780074DC4A /* ForecastCollectionViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				B02C7C931F61A2F4007AD67E /* AppDelegate.swift in Sources */,
 				B00AFB771F6897B40072E906 /* ForecastArray.swift in Sources */,
 				B09B43B91F85030100FBA0C2 /* DateFormater.swift in Sources */,
+				B0359B741FB675780074DC4A /* ForecastCollectionViewCell.swift in Sources */,
 				B00AFB751F6676B30072E906 /* ForecastTableViewCell.swift in Sources */,
 				B0359B601FB3D2850074DC4A /* SeparatedForecastStruct.swift in Sources */,
 				B03F075C1F61FD2300DBFC0D /* Constants.swift in Sources */,
