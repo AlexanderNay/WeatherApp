@@ -25,6 +25,7 @@ class ForecastCollectionViewCell: UICollectionViewCell {
         }
         
         //iconTypeOfWeather
+        iconTypeOfWeather.image = UIImage(named: data.iconTypeOfWeather)
        
         typeOfWeather.text = data.typeOfWeather.capitalized
         temperatureLabel.text = data.upTemperature

@@ -20,6 +20,7 @@ struct SeparatedForecastStruct {
             var typeOfWeather = ""
             var upTemperature = ""
             var downTemperature = ""
+            var iconTypeOfWeather = ""
         }
     }
 }
