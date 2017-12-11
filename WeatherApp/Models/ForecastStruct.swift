@@ -128,7 +128,7 @@ class ForecastStruct: Decodable {
                     
                     
                     
-                    print("Days equal")
+                    print("Days are equal")
                 } else {
                     
                     separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].upTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[index].main.temp_max))

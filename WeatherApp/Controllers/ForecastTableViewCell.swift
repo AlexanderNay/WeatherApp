@@ -25,8 +25,8 @@ class ForecastTableViewCell: UITableViewCell {
          //   let correctedData = String(forecast[1].list[cellRow].dt_txt.dropLast(3))
             // dataForecast.text = correctedData  //Add spase between data and time
             
-            let test123 = forecast[1].separetedForecast
-            print(test123)
+            //let test123 = forecast[1].separetedForecast
+            //print(test123)
             
             dataForecast.text = forecast[1].separetedForecast.baseDays[cellRow].weekDay
          //   detailWeather.text = forecast[1].list[cellRow].weather[0].description.capitalized
