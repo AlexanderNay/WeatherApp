@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Start making code a better place
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
  
     @IBOutlet weak var backgroundImage: UIImageView!
