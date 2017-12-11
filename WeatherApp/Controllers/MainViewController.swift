@@ -10,91 +10,61 @@ import UIKit
 
 // Start making code a better place
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+class MainViewController: UIViewController {
  
     @IBOutlet weak var backgroundImage: UIImageView!
-    
-    var imageBackground = ""
-    var imageIcon = ""
-    var labelCity = ""
-    var labelCurrentDate = ""
-    var labelDetailTypeOfWeather = ""
-    var currentTemp = ""
-    
+ 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var collectionView: UICollectionView!
+
     
     var currentDataWeather: CurrentWeather!
     var forecastDataWeather: ForecastStruct!
-    //var forecastDataWeatherArray: [String]? = ["Oren"]
+    
+    
+    //TODO: - how to appear only one element
     var forecastDataWeatherArray: [ForecastStruct]? = [ForecastStruct()]
-    //var separetedForecastData = SeparatedForecastStruct()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // TODO: - Solve the problem with blurEffect
-//        if imageBackground.bounds != nil {
-//            let blurEffect = UIBlurEffect(style: .dark)
-//            let blurView = UIVisualEffectView(effect: blurEffect)
-//            blurView.frame = imageBackground.bounds
-//            blurView.alpha = 0.1
-//            imageBackground.addSubview(blurView)
-//        }
+        // Do any additional setup after loading the view, typically from a nib.
         
         
-        
+        //Get data from URL and update UI for Current Weather
         currentDataWeather = CurrentWeather()
-        //TODO: Test 2
         currentDataWeather.getDataFromUrl(completed: updateMainUI)
-        print("??????????? \(currentDataWeather.whetherDetailType) ??????????????")
         
+        //Get data from URL and update UI for Forecast
         forecastDataWeather = ForecastStruct()
-        
-        //xxxxxxxxxxxxxxxxxxxxxxxxx
         forecastDataWeather.getForecastData(completed: updateForecastUI)
+
 //        tableView.delegate = self
 //        tableView.dataSource = self
         
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+
     
-    
+}
+
+
+//UITableView
+
+extension MainViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 0
-        } else {
-            return 40
-        }
-    }
-
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let header = Bundle.main.loadNibNamed("HeaderTableViewCell", owner: self, options: nil)?.first as? HeaderTableViewCell
-        return header
-     
-    }
-   
-    
- 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         } else if section == 1 {
-            //return forecastDataWeatherArray![1].list.count
-           
             return forecastDataWeatherArray![1].separetedForecast.baseDays.count
         } else {
             return 0
@@ -113,14 +83,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     print("Cell cell cell cell cell \(indexPath.row)")
                     
                 }
-                
-                
-                
-                
                 return cell
+                
             } else {
                 return ForecastTableViewCell()
             }
+            
         } else if indexPath.section == 0 {
             if let cell2 = tableView.dequeueReusableCell(withIdentifier: "CurrentWeatherCell", for: indexPath) as? CurrentTableViewCell {
                 cell2.confugureCell(data: currentDataWeather)
@@ -132,18 +100,43 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return UITableViewCell()
         }
         
-      
-       
-        
-        
     }
+}
+
+
+extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let tableViewCell = cell as? ForecastTableViewCell else { return }
         tableViewCell.setCollectionViewDataSourseDelegate(dataSourceDelegate: self, forRow: indexPath.row)
     }
     
-    //TODO: - CollecrionView
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0
+        } else {
+            return 40
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let header = Bundle.main.loadNibNamed("HeaderTableViewCell", owner: self, options: nil)?.first as? HeaderTableViewCell
+        return header
+        
+    }
+    
+    
+    
+    
+    
+}
+
+
+// UICollectionView
+
+extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -163,47 +156,50 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
+}
 
-
-    //TODO: Test 1
+extension MainViewController: UICollectionViewDelegate {
     
+}
+
+
+
+// Function for update UI
+
+extension MainViewController {
+   
     func updateMainUI() {
-//        labelCity = currentDataWeather.cityName
-//        labelDetailTypeOfWeather = currentDataWeather.whetherDetailType.capitalized
-//        currentTemp = currentDataWeather.currentTemp
-//        labelCurrentDate = currentDataWeather.date
-//        imageBackground = currentDataWeather.whetherDetailType
-//        //imageBackground.image = UIImage(named: currentDataWeather.whetherDetailType)
-//        imageIcon = currentDataWeather.iconNameForCurrentWeather
-//        //imageIcon.image = UIImage(named: currentDataWeather.iconNameForCurrentWeather)
         
         backgroundImage.image = UIImage(named: currentDataWeather.whetherDetailType)
-        
-                if backgroundImage.bounds != nil {
-                    let blurEffect = UIBlurEffect(style: .dark)
-                    let blurView = UIVisualEffectView(effect: blurEffect)
-                    blurView.frame = backgroundImage.bounds
-                    blurView.alpha = 0.5
-                    backgroundImage.addSubview(blurView)
-                }
-        
-        print("********************************** \n \n **************Functon updateMainUI completed***************** \n \n *****************")
-        print(currentDataWeather.cityName)
+      
 
+        
     }
     
     func updateForecastUI(data: ForecastStruct) {
+        
         forecastDataWeatherArray?.append(data)
         
         print("ffffffffffffffffffff___________\(forecastDataWeatherArray)")
+        print(forecastDataWeatherArray![1].separetedForecast)
         tableView.delegate = self
         tableView.dataSource = self
+       
+        //TODO: - Understand what does heppen here and change if it's necessary
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
         
     }
-
-    
 }
+
+
+
+
+
+
+
+
+
+
 

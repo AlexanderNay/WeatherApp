@@ -25,6 +25,8 @@ struct SeparatedForecastStruct {
     }
 }
 
+//TODO: - If Struct will be nil
+
 extension SeparatedForecastStruct: CustomStringConvertible {
     var description: String {
         var pPrinter = "Start"

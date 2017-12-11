@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		B00AFB731F665BA60072E906 /* ForecastStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00AFB721F665BA60072E906 /* ForecastStruct.swift */; };
 		B00AFB751F6676B30072E906 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00AFB741F6676B30072E906 /* ForecastTableViewCell.swift */; };
-		B00AFB771F6897B40072E906 /* ForecastArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00AFB761F6897B40072E906 /* ForecastArray.swift */; };
-		B026173C1F66268F00805AE9 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B026173B1F66268F00805AE9 /* Forecast.swift */; };
 		B02C7C931F61A2F4007AD67E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C7C921F61A2F4007AD67E /* AppDelegate.swift */; };
-		B02C7C951F61A2F4007AD67E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C7C941F61A2F4007AD67E /* ViewController.swift */; };
+		B02C7C951F61A2F4007AD67E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C7C941F61A2F4007AD67E /* MainViewController.swift */; };
 		B02C7C981F61A2F4007AD67E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02C7C961F61A2F4007AD67E /* Main.storyboard */; };
 		B02C7C9A1F61A2F4007AD67E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B02C7C991F61A2F4007AD67E /* Assets.xcassets */; };
 		B02C7C9D1F61A2F4007AD67E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02C7C9B1F61A2F4007AD67E /* LaunchScreen.storyboard */; };
@@ -29,11 +27,9 @@
 /* Begin PBXFileReference section */
 		B00AFB721F665BA60072E906 /* ForecastStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastStruct.swift; sourceTree = "<group>"; };
 		B00AFB741F6676B30072E906 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
-		B00AFB761F6897B40072E906 /* ForecastArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastArray.swift; sourceTree = "<group>"; };
-		B026173B1F66268F00805AE9 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		B02C7C8F1F61A2F4007AD67E /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B02C7C921F61A2F4007AD67E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B02C7C941F61A2F4007AD67E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B02C7C941F61A2F4007AD67E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B02C7C971F61A2F4007AD67E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B02C7C991F61A2F4007AD67E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B02C7C9C1F61A2F4007AD67E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,7 +89,7 @@
 		B02C7CA41F61A32B007AD67E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B02C7C941F61A2F4007AD67E /* ViewController.swift */,
+				B02C7C941F61A2F4007AD67E /* MainViewController.swift */,
 				B00AFB741F6676B30072E906 /* ForecastTableViewCell.swift */,
 				B0359B611FB4933E0074DC4A /* CurrentTableViewCell.swift */,
 				B0359B6F1FB531990074DC4A /* HeaderTableViewCell.swift */,
@@ -114,10 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				B02C7CA71F61CF59007AD67E /* CurrentWeather.swift */,
-				B026173B1F66268F00805AE9 /* Forecast.swift */,
 				B03F075B1F61FD2300DBFC0D /* Constants.swift */,
 				B00AFB721F665BA60072E906 /* ForecastStruct.swift */,
-				B00AFB761F6897B40072E906 /* ForecastArray.swift */,
 				B09B43B81F85030100FBA0C2 /* DateFormater.swift */,
 				B0359B5F1FB3D2850074DC4A /* SeparatedForecastStruct.swift */,
 			);
@@ -199,17 +193,15 @@
 			files = (
 				B02C7CA81F61CF59007AD67E /* CurrentWeather.swift in Sources */,
 				B00AFB731F665BA60072E906 /* ForecastStruct.swift in Sources */,
-				B02C7C951F61A2F4007AD67E /* ViewController.swift in Sources */,
+				B02C7C951F61A2F4007AD67E /* MainViewController.swift in Sources */,
 				B0359B621FB4933E0074DC4A /* CurrentTableViewCell.swift in Sources */,
 				B0359B711FB531990074DC4A /* HeaderTableViewCell.swift in Sources */,
 				B02C7C931F61A2F4007AD67E /* AppDelegate.swift in Sources */,
-				B00AFB771F6897B40072E906 /* ForecastArray.swift in Sources */,
 				B09B43B91F85030100FBA0C2 /* DateFormater.swift in Sources */,
 				B0359B741FB675780074DC4A /* ForecastCollectionViewCell.swift in Sources */,
 				B00AFB751F6676B30072E906 /* ForecastTableViewCell.swift in Sources */,
 				B0359B601FB3D2850074DC4A /* SeparatedForecastStruct.swift in Sources */,
 				B03F075C1F61FD2300DBFC0D /* Constants.swift in Sources */,
-				B026173C1F66268F00805AE9 /* Forecast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

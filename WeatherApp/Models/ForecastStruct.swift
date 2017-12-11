@@ -8,6 +8,9 @@
 
 import Foundation
 
+
+//TODO: - It should be a struct I think
+
 class ForecastStruct: Decodable {
     class List: Decodable {
         class Main: Decodable {
@@ -173,10 +176,7 @@ class ForecastStruct: Decodable {
             guard let data = data else { return print("****Error") }
             do {
                 let dataForecast = try JSONDecoder().decode(ForecastStruct.self, from: data)
-            //    print("\n \n ********** \n ********** \n")
-            //    print("The city is " + dataForecast.city.name)
-            //    print("The detailWeather is " + dataForecast.list[0].weather[0].description)
-            //    print("The CODE is " + dataForecast.cod)
+  
                 DispatchQueue.main.async { //?????
                     //completed(dataForecast.city.name)
                     completed(dataForecast)
