@@ -14,9 +14,11 @@ class ForecastTableViewCell: UITableViewCell {
  
     @IBOutlet weak var dataForecast: UILabel!
  
-    func configureCell(forecast: ForecastStruct, cellRow: Int) {
+    func configureCell( forecast: ForecastStruct, cellRow: Int) {
         
-            dataForecast.text = forecast.separetedForecast.baseDays[cellRow].weekDay.capitalized
+        //TODO: - XCode suggest the solve of issue. You have to understend why?
+        var forecast = forecast
+        dataForecast.text = forecast.separetedForecast.baseDays[cellRow].weekDay.capitalized
  
     }
     

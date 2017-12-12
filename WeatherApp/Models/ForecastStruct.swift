@@ -11,9 +11,9 @@ import Foundation
 
 //TODO: - It should be a struct I think
 
-class ForecastStruct: Decodable {
-    class List: Decodable {
-        class Main: Decodable {
+struct ForecastStruct: Decodable {
+    struct List: Decodable {
+        struct Main: Decodable {
             var temp: Double!
             var temp_min: Double!
             var temp_max: Double!
@@ -23,20 +23,20 @@ class ForecastStruct: Decodable {
             var humidity: Int!
             var temp_kf: Double!
         }
-        class Weather: Decodable {
+        struct Weather: Decodable {
             var id: Int!
             var main: String!
             var description: String!
             var icon: String!
         }
-        class Clouds: Decodable {
+        struct Clouds: Decodable {
             var all: Int!
         }
-        class Wind: Decodable {
+        struct Wind: Decodable {
             var speed: Double!
             var deg: Double!
         }
-        class Sys: Decodable {
+        struct Sys: Decodable {
             var pod: String!
         }
         var dt: Int!
@@ -66,7 +66,7 @@ class ForecastStruct: Decodable {
         
         
     }
-    class City: Decodable {
+    struct City: Decodable {
         class Coord: Decodable {
             var lat: Double!
             var lon: Double!
@@ -175,7 +175,7 @@ class ForecastStruct: Decodable {
        URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return print("****Error") }
             do {
-                let dataForecast = try JSONDecoder().decode(ForecastStruct.self, from: data)
+                var dataForecast = try JSONDecoder().decode(ForecastStruct.self, from: data)
   
                 DispatchQueue.main.async { //?????
                     //completed(dataForecast.city.name)

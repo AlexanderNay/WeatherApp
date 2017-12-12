@@ -109,8 +109,8 @@
 		B02C7CA61F61A353007AD67E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B02C7CA71F61CF59007AD67E /* CurrentWeather.swift */,
 				B03F075B1F61FD2300DBFC0D /* Constants.swift */,
+				B02C7CA71F61CF59007AD67E /* CurrentWeather.swift */,
 				B00AFB721F665BA60072E906 /* ForecastStruct.swift */,
 				B09B43B81F85030100FBA0C2 /* DateFormater.swift */,
 				B0359B5F1FB3D2850074DC4A /* SeparatedForecastStruct.swift */,
