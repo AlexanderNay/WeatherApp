@@ -180,11 +180,13 @@ class ForecastStruct: Decodable {
                 DispatchQueue.main.async { //?????
                     //completed(dataForecast.city.name)
                     completed(dataForecast)
+                    print("___2___ getForecastData \(dataForecast.separetedForecast)")
                 }
                 
                 
             } catch let jsonError {
                 print("************Error serialezing json: ", jsonError)
+                
             }
             }.resume()
     }

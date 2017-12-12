@@ -14,15 +14,17 @@ class MainViewController: UIViewController {
  
     @IBOutlet weak var backgroundImage: UIImageView!
  
+    @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
-    
+    //TODO: - I'm pretty sure that is not safe. If responce is nil?
     var currentDataWeather: CurrentWeather!
     var forecastDataWeather: ForecastStruct!
     
     
     //TODO: - how to appear only one element
-    var forecastDataWeatherArray: [ForecastStruct]? = [ForecastStruct()]
+    //var forecastDataWeatherArray: [ForecastStruct] = []
+    //var forecastDataWeatherArray: [ForecastStruct]? = [ForecastStruct()]
    
     
     override func viewDidLoad() {
@@ -65,7 +67,7 @@ extension MainViewController: UITableViewDataSource {
         if section == 0 {
             return 1
         } else if section == 1 {
-            return forecastDataWeatherArray![1].separetedForecast.baseDays.count
+            return forecastDataWeather.separetedForecast.baseDays.count
         } else {
             return 0
         }
@@ -77,12 +79,12 @@ extension MainViewController: UITableViewDataSource {
         if indexPath.section == 1 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCellForecast", for: indexPath) as? ForecastTableViewCell {
                 
-                if let forecast = forecastDataWeatherArray {
+               // if let forecast = forecastDataWeatherArray {
                     //if let forecast = forecastDataWeather {
-                    cell.configureCell(forecast: forecast, cellRow: indexPath.row)
+                    cell.configureCell(forecast: forecastDataWeather, cellRow: indexPath.row)
                     print("Cell cell cell cell cell \(indexPath.row)")
                     
-                }
+              //  }
                 return cell
                 
             } else {
@@ -140,13 +142,13 @@ extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return forecastDataWeatherArray![1].separetedForecast.baseDays[collectionView.tag].partsOfTheDay.count
+        return forecastDataWeather.separetedForecast.baseDays[collectionView.tag].partsOfTheDay.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? ForecastCollectionViewCell {
-            let data = forecastDataWeatherArray![1].separetedForecast.baseDays[collectionView.tag].partsOfTheDay[indexPath.row]
+            let data = forecastDataWeather.separetedForecast.baseDays[collectionView.tag].partsOfTheDay[indexPath.row]
             cell.setCellsItems(data: data)
             return cell
         } else {
@@ -178,15 +180,19 @@ extension MainViewController {
     
     func updateForecastUI(data: ForecastStruct) {
         
-        forecastDataWeatherArray?.append(data)
+        forecastDataWeather = data
         
-        print("ffffffffffffffffffff___________\(forecastDataWeatherArray)")
-        print(forecastDataWeatherArray![1].separetedForecast)
+        //forecastDataWeatherArray.append(data)
+        
+        loadingLabel.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
-       
+        
+        
         //TODO: - Understand what does heppen here and change if it's necessary
         DispatchQueue.main.async {
+            //print("ffffffffffffffffffff___________\(self.forecastDataWeatherArray)")
+            print("___3__\(self.forecastDataWeather.separetedForecast)")
             self.tableView.reloadData()
         }
         

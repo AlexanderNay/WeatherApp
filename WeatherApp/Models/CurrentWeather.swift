@@ -12,7 +12,7 @@ class CurrentWeather {
     private var _cityName: String!
     private var _date: String!
     private var _weatherMainType: String!
-    private var _whetherDetailType: String!
+    private var _weatherDetailType: String!
     private var _iconNameForCurrentWeather: String!
     private var _currentTemp: Int!
     private var _currentWeatherID: Int!  // Check do we need this or not
@@ -46,10 +46,10 @@ class CurrentWeather {
     }
     
     var whetherDetailType: String {
-        if _whetherDetailType == nil {
-            _whetherDetailType = "Error"
+        if _weatherDetailType == nil {
+            _weatherDetailType = "Error"
         }
-        return _whetherDetailType
+        return _weatherDetailType
     }
     
     var iconNameForCurrentWeather: String {
@@ -116,6 +116,7 @@ class CurrentWeather {
             print("JSONSerrualezation error: \(parseError.localizedDescription)")
             return
         }
+        print("___1___ updateResults")
         print(response)
         guard let arrayOfWeather = response!["weather"] as? [Any] else {
             print("Dictionary does not contain wheather key")
@@ -127,15 +128,15 @@ class CurrentWeather {
                let weatherIcon = weatherDictionary["icon"] as? String,
                let weatherID = weatherDictionary["id"] as? Int {  //Check will you use it or not
             
-                self._whetherDetailType = weatherDesctiption
+                self._weatherDetailType = weatherDesctiption
                 self._weatherMainType = weatherMain
                 self._iconNameForCurrentWeather = weatherIcon
                 self._currentWeatherID = weatherID
                 
-            print("%%%%%%%%%%%%% \(self._whetherDetailType) \n \(self._weatherMainType) \n \(self._iconNameForCurrentWeather) \n \(self._currentWeatherID) \n %%%%%%%%%")
+            print("%%%%%%%%%%%%% \(self._weatherDetailType) \n \(self._weatherMainType) \n \(self._iconNameForCurrentWeather) \n \(self._currentWeatherID) \n %%%%%%%%%")
             }
         } else {
-            print("Error with parsing branch whether")
+            print("Error with parsing branch weather")
         }
         if let cityName = response!["name"] as? String {
             self._cityName = cityName
@@ -145,7 +146,7 @@ class CurrentWeather {
             print("Error with parsing branch name")
         }
         guard let dictionaryMain = response!["main"] as? [String : Any] else {
-            print("Dictionary does not contain whether key or it has type issue")
+            print("Dictionary does not contain weather key or it has type issue")
             return
         }
         if let currentTemp = dictionaryMain["temp"] as? Double {

@@ -14,9 +14,9 @@ class ForecastTableViewCell: UITableViewCell {
  
     @IBOutlet weak var dataForecast: UILabel!
  
-    func configureCell(forecast: [ForecastStruct], cellRow: Int) {
+    func configureCell(forecast: ForecastStruct, cellRow: Int) {
         
-            dataForecast.text = forecast[1].separetedForecast.baseDays[cellRow].weekDay.capitalized
+            dataForecast.text = forecast.separetedForecast.baseDays[cellRow].weekDay.capitalized
  
     }
     
