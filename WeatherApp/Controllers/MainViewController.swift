@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        //print("*&*&*&&&*&*&*&*&**& \(languageString)&*&*&*&*&*&*&***&*&&*&*&")
         
         //Get data from URL and update UI for Current Weather
         currentDataWeather = CurrentWeather()
@@ -81,7 +81,7 @@ extension MainViewController: UITableViewDataSource {
                 
                // if let forecast = forecastDataWeatherArray {
                     //if let forecast = forecastDataWeather {
-                    cell.configureCell(forecast: forecastDataWeather, cellRow: indexPath.row)
+                cell.configureCell(forecast: forecastDataWeather, currentDateSince1970: currentDataWeather.dt, cellRow: indexPath.row)
                     print("Cell cell cell cell cell \(indexPath.row)")
                     
               //  }
@@ -172,7 +172,7 @@ extension MainViewController {
    
     func updateMainUI() {
         
-        backgroundImage.image = UIImage(named: currentDataWeather.whetherDetailType)
+        backgroundImage.image = UIImage(named: String(currentDataWeather.currentWeatherID))
       
 
         

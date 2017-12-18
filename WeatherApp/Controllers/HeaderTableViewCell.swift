@@ -10,8 +10,11 @@ import UIKit
 
 class HeaderTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var forecastLable: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        forecastLable.text = NSLocalizedString("Forecast", comment: "A label peceding the forecast")
         // Initialization code
     }
 

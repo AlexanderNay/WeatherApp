@@ -17,7 +17,7 @@ class ForecastCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var temperatureLabel: UILabel!
     
     func setCellsItems(data: SeparatedForecastStruct.BaseDay.PartsOfTheDay) {
-        backgoundImage.image = UIImage(named: data.typeOfWeather)
+        backgoundImage.image = UIImage(named: data.weatherID)
         if data.time == "12:00 AM"{
             timeLabel.text = "00:00 AM"
         } else {

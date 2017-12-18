@@ -9,6 +9,7 @@
 import Foundation
 
 class CurrentWeather {
+    private var _dt: Int!
     private var _cityName: String!
     private var _date: String!
     private var _weatherMainType: String!
@@ -16,7 +17,17 @@ class CurrentWeather {
     private var _iconNameForCurrentWeather: String!
     private var _currentTemp: Int!
     private var _currentWeatherID: Int!  // Check do we need this or not
+    
+    
     var task: URLSessionDataTask?
+    
+    
+    var dt: Int {
+        if _dt == nil {
+            _dt = 0
+        }
+        return _dt
+    }
     
     var cityName: String {
         if _cityName == nil {
@@ -33,6 +44,7 @@ class CurrentWeather {
         let dateFormater = DateFormatter()
         dateFormater.dateStyle = .long
         dateFormater.timeStyle = .none
+        //let date = Date(timeIntervalSince1970: timeInterval)
         let currentDate = dateFormater.string(from: Date())
         self._date = currentDate
         return _date
@@ -118,10 +130,12 @@ class CurrentWeather {
         }
         print("___1___ updateResults")
         print(response)
-        guard let arrayOfWeather = response!["weather"] as? [Any] else {
-            print("Dictionary does not contain wheather key")
-            return
-        }
+        guard let arrayOfWeather = response!["weather"] as? [Any] else { print("Dictionary does not contain wheather key"); return}
+        
+        guard let weatherDateSince1970 = response!["dt"] as? Int else { print("Dictionory doies not contain dt key"); return}
+        self._dt = weatherDateSince1970
+        
+        
         if let weatherDictionary = arrayOfWeather[0] as? [String : Any] {
             if let weatherDesctiption = weatherDictionary["description"] as? String,
                let weatherMain = weatherDictionary["main"] as? String,

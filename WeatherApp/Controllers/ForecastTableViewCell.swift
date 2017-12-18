@@ -14,11 +14,19 @@ class ForecastTableViewCell: UITableViewCell {
  
     @IBOutlet weak var dataForecast: UILabel!
  
-    func configureCell( forecast: ForecastStruct, cellRow: Int) {
+    func configureCell( forecast: ForecastStruct, currentDateSince1970: Int, cellRow: Int) {
         
         //TODO: - XCode suggest the solve of issue. You have to understend why?
         var forecast = forecast
-        dataForecast.text = forecast.separetedForecast.baseDays[cellRow].weekDay.capitalized
+        let currentWeekDay = convertDataFromIntervalSince1970ToWeekday(intervalSince1970: currentDateSince1970).capitalized
+        let forecastWeekDay = forecast.separetedForecast.baseDays[cellRow].weekDay.capitalized
+        if currentWeekDay == forecastWeekDay {
+            dataForecast.text = NSLocalizedString("Today", comment: "A label representig the forecast for today")
+        } else {
+            dataForecast.text = forecastWeekDay
+        }
+       
+        //dataForecast.text = forecast.separetedForecast.baseDays[cellRow].weekDay.capitalized
  
     }
     

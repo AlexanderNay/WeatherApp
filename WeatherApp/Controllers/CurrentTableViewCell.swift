@@ -24,7 +24,7 @@ class CurrentTableViewCell: UITableViewCell {
         typeOfWeather.text = data.whetherDetailType.capitalized
         currentTemperature.text = data.currentTemp
         todayDate.text = data.date
-        backgroudImage.image = UIImage(named: data.whetherDetailType)
+        backgroudImage.image = UIImage(named: String(data.currentWeatherID))
         
     
         iconOfWeather.image = UIImage(named: data.iconNameForCurrentWeather)

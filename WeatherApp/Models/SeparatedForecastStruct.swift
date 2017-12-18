@@ -21,6 +21,7 @@ struct SeparatedForecastStruct {
             var upTemperature = ""
             var downTemperature = ""
             var iconTypeOfWeather = ""
+            var weatherID = ""
         }
     }
 }
@@ -37,7 +38,8 @@ extension SeparatedForecastStruct: CustomStringConvertible {
                 let pTime = "\n\(baseDays[i].partsOfTheDay[j].time)"
                 let pTypeOfWeather = " \(baseDays[i].partsOfTheDay[j].typeOfWeather)"
                 let pUpTemperature = " \(baseDays[i].partsOfTheDay[j].upTemperature)"
-                pPrinter = pPrinter + pTime + pTypeOfWeather + pUpTemperature
+                let pWearherID = " id: \(baseDays[i].partsOfTheDay[j].weatherID)"
+                pPrinter = pPrinter + pTime + pTypeOfWeather + pUpTemperature + pWearherID
             }
         }
         pPrinter += "\nFinish"

@@ -48,19 +48,8 @@ struct ForecastStruct: Decodable {
         var dt_txt: String!
         
         var weekDay: String {
-            let dateFormater = DateFormatter()
             
-            dateFormater.dateStyle = .short
-            //dateFormater.weekdaySymbols
-            dateFormater.timeStyle = .none
-            let timeInterval = TimeInterval(dt)
-            let date = Date(timeIntervalSince1970: timeInterval)
-            //let currentDate = dateFormater.string(from: date)
-            //let weekday = Calendar.current.component(.weekday, from: date)
-            let weekdayName = dateFormater.weekdaySymbols[Calendar.current.component(.weekday, from: date) - 1]
-            
-            
-            return weekdayName
+            return convertDataFromIntervalSince1970ToWeekday(intervalSince1970: dt)
         }
         
         
@@ -120,7 +109,7 @@ struct ForecastStruct: Decodable {
                 
                 if data.list[index].weekDay == data.list[index + 1].weekDay {
                     
-                    
+                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].weatherID = String(data.list[index].weather[0].id)
                     separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].upTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[index].main.temp_max))
                     separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].downTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[index].main.temp_min))
                     separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].typeOfWeather = data.list[index].weather[0].description
@@ -133,7 +122,7 @@ struct ForecastStruct: Decodable {
                     
                     print("Days are equal")
                 } else {
-                    
+                    separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].weatherID = String(data.list[index].weather[0].id)
                     separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].upTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[index].main.temp_max))
                     separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].downTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[index].main.temp_min))
                     separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].typeOfWeather = data.list[index].weather[0].description
@@ -153,6 +142,7 @@ struct ForecastStruct: Decodable {
                 
 
             }
+            separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].weatherID = String(data.list[counterOfIndex].weather[0].id)
             separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].upTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[counterOfIndex].main.temp_max))
             separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].downTemperature = temperetureConverterAndSetter(kelvin: Int(data.list[counterOfIndex].main.temp_min))
             separetedStruct.baseDays[counterDays].partsOfTheDay[counterPartsOfDay].typeOfWeather = data.list[counterOfIndex].weather[0].description

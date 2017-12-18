@@ -21,6 +21,8 @@
 		B0359B721FB531990074DC4A /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0359B701FB531990074DC4A /* HeaderTableViewCell.xib */; };
 		B0359B741FB675780074DC4A /* ForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0359B731FB675780074DC4A /* ForecastCollectionViewCell.swift */; };
 		B03F075C1F61FD2300DBFC0D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03F075B1F61FD2300DBFC0D /* Constants.swift */; };
+		B0688C0A1FE71AE600E5B43A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0688C0C1FE71AE600E5B43A /* InfoPlist.strings */; };
+		B0688C0F1FE71AE700E5B43A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0688C111FE71AE700E5B43A /* Localizable.strings */; };
 		B09B43B91F85030100FBA0C2 /* DateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09B43B81F85030100FBA0C2 /* DateFormater.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,10 @@
 		B0359B701FB531990074DC4A /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
 		B0359B731FB675780074DC4A /* ForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		B03F075B1F61FD2300DBFC0D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B0688C061FE702D400E5B43A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		B0688C071FE702D400E5B43A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B0688C0B1FE71AE600E5B43A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B0688C101FE71AE700E5B43A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B09B43B81F85030100FBA0C2 /* DateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +80,8 @@
 		B02C7C911F61A2F4007AD67E /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				B0688C111FE71AE700E5B43A /* Localizable.strings */,
+				B0688C0C1FE71AE600E5B43A /* InfoPlist.strings */,
 				B02C7CA61F61A353007AD67E /* Models */,
 				B02C7CA51F61A33E007AD67E /* Views */,
 				B02C7CA41F61A32B007AD67E /* Controllers */,
@@ -178,9 +186,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0359B721FB531990074DC4A /* HeaderTableViewCell.xib in Resources */,
+				B0688C0F1FE71AE700E5B43A /* Localizable.strings in Resources */,
 				B02C7C9D1F61A2F4007AD67E /* LaunchScreen.storyboard in Resources */,
 				B02C7C9A1F61A2F4007AD67E /* Assets.xcassets in Resources */,
 				B02C7C981F61A2F4007AD67E /* Main.storyboard in Resources */,
+				B0688C0A1FE71AE600E5B43A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +222,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B02C7C971F61A2F4007AD67E /* Base */,
+				B0688C061FE702D400E5B43A /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -220,8 +231,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				B02C7C9C1F61A2F4007AD67E /* Base */,
+				B0688C071FE702D400E5B43A /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B0688C0C1FE71AE600E5B43A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0688C0B1FE71AE600E5B43A /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B0688C111FE71AE700E5B43A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0688C101FE71AE700E5B43A /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -231,6 +259,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -275,7 +304,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -288,6 +317,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -326,7 +356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

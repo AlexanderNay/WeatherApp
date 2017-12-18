@@ -1,0 +1,27 @@
+/* Class = "UILabel"; text = "Type of Weather"; ObjectID = "1Ea-Lj-XdJ"; */
+"1Ea-Lj-XdJ.text" = "Type of Weather";
+
+/* Class = "UILabel"; text = "Loading..."; ObjectID = "8fW-Qr-lFE"; */
+"8fW-Qr-lFE.text" = "Loading...";
+
+/* Class = "UILabel"; text = "Type of weather"; ObjectID = "Kri-da-lbv"; */
+"Kri-da-lbv.text" = "Type of weather";
+
+/* Class = "UILabel"; text = "-00°"; ObjectID = "Mpg-Ct-nv6"; */
+"Mpg-Ct-nv6.text" = "-00°";
+
+/* Class = "UILabel"; text = "Wendesday"; ObjectID = "N93-8F-LaH"; */
+"N93-8F-LaH.text" = "Wendesday";
+
+/* Class = "UILabel"; text = "Today, September 7"; ObjectID = "S3h-pg-B5W"; */
+"S3h-pg-B5W.text" = "Today, September 7";
+
+/* Class = "UILabel"; text = "City"; ObjectID = "e8Z-dD-SEo"; */
+"e8Z-dD-SEo.text" = "City";
+
+/* Class = "UILabel"; text = "+00°"; ObjectID = "qzg-0n-EvF"; */
+"qzg-0n-EvF.text" = "+00°";
+
+/* Class = "UILabel"; text = "00:00 AM"; ObjectID = "sqc-cu-HYJ"; */
+"sqc-cu-HYJ.text" = "00:00 AM";
+

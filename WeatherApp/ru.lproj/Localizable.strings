@@ -1,0 +1,6 @@
+/* A label peceding the forecast */
+"Forecast" = "Прогноз";
+
+/* A label representig the forecast for today */
+"Today" = "Сегодня";
+
