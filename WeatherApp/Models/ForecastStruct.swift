@@ -157,9 +157,9 @@ struct ForecastStruct: Decodable {
     }
     
     
-    func getForecastData(completed: @escaping (_ data: ForecastStruct)->()) {
+    func getForecastData(forecastWeatherURL: String, completed: @escaping (_ data: ForecastStruct)->()) {
        
-        guard let url = URL(string: forecastLinkURL) else { return print("***Error") }
+        guard let url = URL(string: forecastWeatherURL) else { return print("***Error") }
         
 
        URLSession.shared.dataTask(with: url) { (data, response, error) in

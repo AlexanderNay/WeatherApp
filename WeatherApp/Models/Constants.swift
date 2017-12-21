@@ -8,20 +8,32 @@
 
 import Foundation
 
-let languageString = String(describing: Locale.current.languageCode!)
 
-let latitiude = "55.75"  // 55.75  49.28
+let systemLanguage = String(describing: Locale.current.languageCode!)
+
+let latitude = "55.75"  // 55.75  49.28
 let longitude = "37.61"  // 37.61   -123.13
-var currentLinkURL = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitiude)&lon=\(longitude)&lang=\(languageString)&APPID=92e10328812e8ab73443258f102a6a84"
+let id_Main_id = "92e10328812e8ab73443258f102a6a84"
+var currentLinkURL = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&lang=\(systemLanguage)&APPID=92e10328812e8ab73443258f102a6a84"
 //https://api.openweathermap.org/data/2.5/weather?lat=55.75&lon=37.61&APPID=92e10328812e8ab73443258f102a6a84
 
-var forecastLinkURL = "https://api.openweathermap.org/data/2.5/forecast?lat=\(latitiude)&lon=\(longitude)&lang=\(languageString)&APPID=92e10328812e8ab73443258f102a6a84"
+var forecastLinkURL = "https://api.openweathermap.org/data/2.5/forecast?lat=\(latitude)&lon=\(longitude)&lang=\(systemLanguage)&APPID=92e10328812e8ab73443258f102a6a84"
 
 //https://api.openweathermap.org/data/2.5/forecast/daily?lat=55.75&lon=37.61&APPID=92e10328812e8ab73443258f102a6a84
 
+// Test Location Name
 
 
 
+
+
+
+
+func generaterURL(id: String, latitude: Double, longitude: Double, systemLanguage: String) -> (currentURL: String, forecastURL: String){
+    let currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&lang=\(systemLanguage)&APPID=\(id)"
+    let forecastWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?lat=\(latitude)&lon=\(longitude)&lang=\(systemLanguage)&APPID=\(id)"
+    return (currentWeatherURL, forecastWeatherURL)
+}
 
 
 

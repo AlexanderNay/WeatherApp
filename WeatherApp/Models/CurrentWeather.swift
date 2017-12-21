@@ -93,8 +93,8 @@ class CurrentWeather {
     
     let defaultSession = URLSession(configuration: .default)
     
-    func getDataFromUrl(completed: @escaping ()->()) {
-        let url = URL(string: currentLinkURL)!
+    func getDataFromUrl(currentWeatherUrl: String, completed: @escaping ()->()) {
+        let url = URL(string: currentWeatherUrl)!
         task = defaultSession.dataTask(with: url) { (data, response, error) in
             defer {
                 self.task = nil

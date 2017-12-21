@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 // Start making code a better place
 
@@ -16,6 +18,9 @@ class MainViewController: UIViewController {
  
     @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    let locationManager = CLLocationManager()
 
     //TODO: - I'm pretty sure that is not safe. If responce is nil?
     var currentDataWeather: CurrentWeather!
@@ -32,13 +37,22 @@ class MainViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         //print("*&*&*&&&*&*&*&*&**& \(languageString)&*&*&*&*&*&*&***&*&&*&*&")
         
-        //Get data from URL and update UI for Current Weather
-        currentDataWeather = CurrentWeather()
-        currentDataWeather.getDataFromUrl(completed: updateMainUI)
+        //Get location
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
-        //Get data from URL and update UI for Forecast
+        
+        
+        //Initialise current weather object
+        currentDataWeather = CurrentWeather()
+       
+        
+        
+        //Initialise forecast weather object
         forecastDataWeather = ForecastStruct()
-        forecastDataWeather.getForecastData(completed: updateForecastUI)
+       
 
 //        tableView.delegate = self
 //        tableView.dataSource = self
@@ -196,6 +210,64 @@ extension MainViewController {
             self.tableView.reloadData()
         }
         
+    }
+}
+
+extension MainViewController: CLLocationManagerDelegate {
+    
+    
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[locations.count - 1]
+        if location.horizontalAccuracy > 0 {
+            locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
+            print(location.coordinate)
+            
+            
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+            
+            
+            //Generate URLs here depend on current location
+            let mainURLs = generaterURL(id: id_Main_id, latitude: latitude, longitude: longitude, systemLanguage: systemLanguage)
+            
+            //TEst start
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(location, completionHandler: { placemarks, error in
+                if error == nil {
+                    let firstLocation = placemarks?[0]
+                    print("______________place place place place place place place place ")
+                    print(firstLocation)
+                    self.tableView.reloadData()
+                    //completionHandler(firstLoaction)
+                } else {
+                    //completionHandler(nil)
+                }
+            
+            
+            })
+            
+            //test finish
+            
+            
+            
+            
+            
+            //Get data from URL and update UI for Current Weather
+            //currentDataWeather.getDataFromUrl(completed: updateMainUI)
+            currentDataWeather.getDataFromUrl(currentWeatherUrl: mainURLs.currentURL, completed: updateMainUI)
+            //Get data from URL and update UI for Forecast
+            //forecastDataWeather.getForecastData(completed: updateForecastUI)
+            forecastDataWeather.getForecastData(forecastWeatherURL: mainURLs.forecastURL, completed: updateForecastUI)
+           
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+        loadingLabel.text = NSLocalizedString("Location Unavailable", comment: "The Label report about error in locarion manager")
     }
 }
 
