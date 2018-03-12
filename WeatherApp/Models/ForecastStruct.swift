@@ -101,6 +101,7 @@ struct ForecastStruct: Decodable {
                 let currentDate = dateFormater.string(from: date)
                 return currentDate
             }
+            
             var separetedStruct = SeparatedForecastStruct()
             var counterDays = 0
             var counterPartsOfDay = 0

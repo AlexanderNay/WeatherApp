@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreLocation
-import MapKit
+
 
 // Start making code a better place
 
@@ -213,6 +213,8 @@ extension MainViewController {
     }
 }
 
+// location
+
 extension MainViewController: CLLocationManagerDelegate {
     
     
@@ -233,27 +235,6 @@ extension MainViewController: CLLocationManagerDelegate {
             //Generate URLs here depend on current location
             let mainURLs = generaterURL(id: id_Main_id, latitude: latitude, longitude: longitude, systemLanguage: systemLanguage)
             
-            //TEst start
-            let geocoder = CLGeocoder()
-            geocoder.reverseGeocodeLocation(location, completionHandler: { placemarks, error in
-                if error == nil {
-                    let firstLocation = placemarks?[0]
-                    print("______________place place place place place place place place ")
-                    print(firstLocation)
-                    self.tableView.reloadData()
-                    //completionHandler(firstLoaction)
-                } else {
-                    //completionHandler(nil)
-                }
-            
-            
-            })
-            
-            //test finish
-            
-            
-            
-            
             
             //Get data from URL and update UI for Current Weather
             //currentDataWeather.getDataFromUrl(completed: updateMainUI)
@@ -261,6 +242,59 @@ extension MainViewController: CLLocationManagerDelegate {
             //Get data from URL and update UI for Forecast
             //forecastDataWeather.getForecastData(completed: updateForecastUI)
             forecastDataWeather.getForecastData(forecastWeatherURL: mainURLs.forecastURL, completed: updateForecastUI)
+            //TEst start
+            let location = CLLocation(latitude: latitude, longitude: longitude)
+            //let location = CLLocation(latitude: 45.793252, longitude: 1.235222)
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(location, completionHandler: { placemarks, error in
+                if error == nil {
+                    let firstLocation = placemarks?[0]
+                    print("______________place place place place place place place place ")
+                    print(firstLocation)
+                    print("______________")
+                    print("______________")
+                    let comma = ", "
+                    print(firstLocation?.name, comma, firstLocation?.isoCountryCode, comma, firstLocation?.country, comma, firstLocation?.postalCode, comma, firstLocation?.administrativeArea, comma, firstLocation?.subAdministrativeArea, comma, firstLocation?.locality, comma, firstLocation?.subLocality, comma, firstLocation?.thoroughfare, comma, firstLocation?.subThoroughfare, comma, firstLocation?.region, comma, firstLocation?.timeZone)
+                    print("firstLocation?.name: \(firstLocation?.name)")
+                    print("firstLocation?.isoCountryCode: \(firstLocation?.isoCountryCode)")
+                    print("firstLocation?.country: \(firstLocation?.country)")
+                    print("firstLocation?.postalCode: \(firstLocation?.postalCode)")
+                    print("firstLocation?.administrativeArea: \(firstLocation?.administrativeArea)")
+                    print("firstLocation?.subAdministrativeArea: \(firstLocation?.subAdministrativeArea)")
+                    print("firstLocation?.locality: \(firstLocation?.locality)")
+                    print("firstLocation?.subLocality: \(firstLocation?.subLocality)")
+                    print("firstLocation?.thoroughfare: \(firstLocation?.thoroughfare)")
+                    print("firstLocation?.subThoroughfare: \(firstLocation?.subThoroughfare)")
+                    print("firstLocation?.region: \(firstLocation?.region)")
+                    print("firstLocation?.timeZone: \(firstLocation?.timeZone)")
+                    
+                    
+                    if firstLocation?.locality == nil {
+                        self.currentDataWeather._cityName = firstLocation?.administrativeArea
+                        self.currentDataWeather._district = firstLocation?.subAdministrativeArea
+                    } else if firstLocation?.subLocality == nil {
+                        self.currentDataWeather._cityName = firstLocation?.subAdministrativeArea
+                        self.currentDataWeather._district = firstLocation?.locality
+                    } else {
+                        self.currentDataWeather._cityName = firstLocation?.locality
+                        self.currentDataWeather._district = firstLocation?.subLocality
+                    }
+                    
+                    
+                    
+                    
+                    self.tableView.reloadData()
+                    
+                    
+                } else {
+                    print("______________place place place place place place place place ")
+                    print(error)
+                }
+                
+                
+            })
+            
+            //test finish
            
         }
     }

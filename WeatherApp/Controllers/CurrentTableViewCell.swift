@@ -14,6 +14,7 @@ class CurrentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var backgroudImage: UIImageView!
     @IBOutlet weak var cityName: UILabel!
+    @IBOutlet weak var dictrict: UILabel!
     @IBOutlet weak var todayDate: UILabel!
     @IBOutlet weak var typeOfWeather: UILabel!
     @IBOutlet weak var currentTemperature: UILabel!
@@ -21,6 +22,11 @@ class CurrentTableViewCell: UITableViewCell {
     
     func confugureCell(data: CurrentWeather) {
         cityName.text = data.cityName
+        dictrict.text = data.district
+        dictrict.isHidden = false
+        if cityName.text == dictrict.text {
+            dictrict.isHidden = true
+        }
         typeOfWeather.text = data.whetherDetailType.capitalized
         currentTemperature.text = data.currentTemp
         todayDate.text = data.date

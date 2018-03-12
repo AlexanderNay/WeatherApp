@@ -7,19 +7,43 @@
 //
 
 import Foundation
+import CoreLocation
+import MapKit
 
 class CurrentWeather {
     private var _dt: Int!
-    private var _cityName: String!
+    var _cityName: String!
+    var _district: String!
     private var _date: String!
     private var _weatherMainType: String!
     private var _weatherDetailType: String!
     private var _iconNameForCurrentWeather: String!
     private var _currentTemp: Int!
     private var _currentWeatherID: Int!  // Check do we need this or not
+    private var _latitude: Double!
+    private var _longitude: Double!
+    
     
     
     var task: URLSessionDataTask?
+    
+    
+    
+    var latitude: Double {
+        if _latitude == nil {
+            _latitude = 0
+        }
+        return _latitude
+    }
+    
+    var longitude: Double {
+        if _longitude == nil {
+            _longitude = 0
+        }
+        return _longitude
+    }
+    
+    
     
     
     var dt: Int {
@@ -34,6 +58,13 @@ class CurrentWeather {
             _cityName = "Error"
         }
         return _cityName
+    }
+    
+    var district: String {
+        if _district == nil {
+            _district = "Error"
+        }
+        return _district
     }
     
     var date: String {
@@ -132,7 +163,7 @@ class CurrentWeather {
         print(response)
         guard let arrayOfWeather = response!["weather"] as? [Any] else { print("Dictionary does not contain wheather key"); return}
         
-        guard let weatherDateSince1970 = response!["dt"] as? Int else { print("Dictionory doies not contain dt key"); return}
+        guard let weatherDateSince1970 = response!["dt"] as? Int else { print("Dictionory does not contain dt key"); return}
         self._dt = weatherDateSince1970
         
         
@@ -152,13 +183,13 @@ class CurrentWeather {
         } else {
             print("Error with parsing branch weather")
         }
-        if let cityName = response!["name"] as? String {
-            self._cityName = cityName
-            print(self._cityName)
-            print(self.cityName)
-        } else {
-            print("Error with parsing branch name")
-        }
+//        if let cityName = response!["name"] as? String {
+//            self._cityName = cityName
+//            print(self._cityName)
+//            print(self.cityName)
+//        } else {
+//            print("Error with parsing branch name")
+//        }
         guard let dictionaryMain = response!["main"] as? [String : Any] else {
             print("Dictionary does not contain weather key or it has type issue")
             return
@@ -168,6 +199,14 @@ class CurrentWeather {
             print(self._currentTemp)
             print(self.currentTemp)
         }
+        
+        if let coordinatesFromCurrentWeather = response!["coord"] as? [String : Double] {
+            self._longitude = coordinatesFromCurrentWeather["lon"]
+            self._latitude = coordinatesFromCurrentWeather["lat"]
+        }
+        
+       
+        
         
     }
     
